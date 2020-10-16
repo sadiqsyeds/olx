@@ -1,0 +1,79 @@
+{% extends 'product/base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container">
+
+    <div class="product-desc">
+        <div class="col-md-7 product-view">
+            <h2>{{product_details.title}}</h2>
+            <p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">Karnataka</a>, <a href="#">Bangalore</a>| Added at {{product_details.created}}, Ad ID: 987654321</p>
+            <div class="flexslider">
+                <ul class="slides">
+                {% for prdimage in product_images %}
+                    <li data-thumb="{{prdimage.image.url}}">
+                        <img src="{{prdimage.image.url}}" />
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <!-- FlexSlider -->
+                <script defer src="{% static 'product/js/jquery.flexslider.js' %}"></script>
+            <link rel="stylesheet" href="{% static 'product/css/flexslider.css' %}" type="text/css" media="screen" />
+
+                <script>
+            // Can also be used with $(document).ready()
+            $(window).load(function() {
+                $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+                });
+            });
+            </script>
+            <!-- //FlexSlider -->
+            <div class="product-details">
+                <h4>Brand : <a href="#">{{product_details.brand}}</a></h4>
+                <h4>Views : <strong>150</strong></h4>
+                <p><strong>Description </strong>: {{product_details.decrtiption}}</p>    
+            </div>
+        </div>
+        <div class="col-md-5 product-details-grid">
+            <div class="item-price">
+                <div class="product-price">
+                    <p class="p-price">Price</p>
+                    <h3 class="rate">Rs. {{product_details.price}}</h3>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="condition">
+                    <p class="p-price">Condition</p>
+                    <h4>Good</h4>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="itemtype">
+                    <p class="p-price">Item Type</p>
+                    <h4>Phones</h4>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="interested text-center">
+                <h4>Interested in this Ad?<small> Contact the Seller!</small></h4>
+                <p><i class="glyphicon glyphicon-earphone"></i>00-85-9875462655</p>
+            </div>
+                <div class="tips">
+                <h4>Safety Tips for Buyers</h4>
+                    <ol>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                        <li><a href="#">Contrary to popular belief.</a></li>
+                    </ol>
+                </div>
+        </div>
+    <div class="clearfix"></div>
+</div>
+{% endblock body %}
